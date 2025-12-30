@@ -1,0 +1,262 @@
+{
+  "input": {
+    "workflow": {
+      "3": {
+        "inputs": {
+          "seed": [
+            "73",
+            0
+          ],
+          "steps": 25,
+          "cfg": [
+            "68",
+            0
+          ],
+          "sampler_name": "euler",
+          "scheduler": "normal",
+          "denoise": 1,
+          "model": [
+            "11",
+            0
+          ],
+          "positive": [
+            "6",
+            0
+          ],
+          "negative": [
+            "7",
+            0
+          ],
+          "latent_image": [
+            "5",
+            0
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "4": {
+        "inputs": {
+          "ckpt_name": "playground-v2.5-1024px-aesthetic.fp16.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+          "title": "CheckpointLoaderSimple"
+        }
+      },
+      "5": {
+        "inputs": {
+          "value": 1152,
+          "width": [
+            "66",
+            0
+          ],
+          "height": [
+            "67",
+            0
+          ]
+        },
+        "class_type": "EmptyLatentImage",
+        "_meta": {
+          "title": "EmptyLatentImage"
+        }
+      },
+      "6": {
+        "inputs": {
+          "text": [
+            "47",
+            0
+          ],
+          "clip": [
+            "4",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "7": {
+        "inputs": {
+          "text": [
+            "48",
+            0
+          ],
+          "clip": [
+            "4",
+            1
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP Text Encode (Negative)"
+        }
+      },
+      "8": {
+        "inputs": {
+          "samples": [
+            "3",
+            0
+          ],
+          "vae": [
+            "4",
+            2
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "11": {
+        "inputs": {
+          "filename": "edm_playground_v2.5",
+          "model": [
+            "4",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingContinuousEDM",
+        "_meta": {
+          "title": "ModelSamplingContinuousEDM"
+        }
+      },
+      "47": {
+        "inputs": {
+          "text": "placeholder"
+        },
+        "class_type": "PrimitiveString",
+        "_meta": {
+          "title": "prompt_input"
+        }
+      },
+      "48": {
+        "inputs": {
+          "text": "placeholder negative"
+        },
+        "class_type": "PrimitiveString",
+        "_meta": {
+          "title": "negative_input"
+        }
+      },
+      "50": {
+        "inputs": {
+          "image": [
+            "8",
+            0
+          ]
+        },
+        "class_type": "AestheticsPredictorV2_5Node",
+        "_meta": {
+          "title": "AestheticsPredictorV2_5Node"
+        }
+      },
+      "66": {
+        "inputs": {
+          "value": 1152
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+          "title": "width"
+        }
+      },
+      "67": {
+        "inputs": {
+          "value": 768
+        },
+        "class_type": "PrimitiveInt",
+        "_meta": {
+          "title": "height"
+        }
+      },
+      "68": {
+        "inputs": {
+          "value": 7
+        },
+        "class_type": "PrimitiveFloat",
+        "_meta": {
+          "title": "PrimitiveFloat"
+        }
+      },
+      "73": {
+        "inputs": {
+          "value": -1
+        },
+        "class_type": "Seed (rgthree)",
+        "_meta": {
+          "title": "Seed (rgthree)"
+        }
+      },
+      "79": {
+        "inputs": {
+          "text": "",
+          "positive": [
+            "47",
+            0
+          ],
+          "negative": [
+            "48",
+            0
+          ],
+          "width": [
+            "66",
+            0
+          ],
+          "height": [
+            "67",
+            0
+          ],
+          "seed_value": [
+            "73",
+            0
+          ],
+          "cfg": [
+            "68",
+            0
+          ],
+          "custom": [
+            "50",
+            1
+          ]
+        },
+        "class_type": "Image Saver Metadata",
+        "_meta": {
+          "title": "Image Saver Metadata"
+        }
+      },
+      "80": {
+        "inputs": {
+          "text": "",
+          "images": [
+            "8",
+            0
+          ],
+          "metadata": [
+            "79",
+            0
+          ],
+          "filename": [
+            "47",
+            0
+          ]
+        },
+        "class_type": "Image Saver Simple",
+        "_meta": {
+          "title": "Image Saver Simple"
+        }
+      },
+      "84": {
+        "inputs": {
+          "text": ""
+        },
+        "class_type": "Display Any (rgthree)",
+        "_meta": {
+          "title": "Display Any (rgthree)"
+        }
+      }
+    }
+  }
+}
