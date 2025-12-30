@@ -1,11 +1,17 @@
 # clean base image containing only comfyui, comfy-cli and comfyui-manager
 FROM runpod/worker-comfyui:5.5.0-base
 
-# install custom nodes into comfyui
-# (no custom nodes declared in the workflow)
+# 1. Install custom nodes into comfyui
+RUN cd /comfyui/custom_nodes && \
+    git clone https://github.com/discus0434/comfyui-aesthetic-predictor-v2-5.git
 
-# download models into comfyui
+# 2. Install dependencies for the new node
+RUN if [ -f /comfyui/custom_nodes/comfyui-aesthetic-predictor-v2-5/requirements.txt ]; then \
+    pip install -r /comfyui/custom_nodes/comfyui-aesthetic-predictor-v2-5/requirements.txt; \
+    fi
+
+# 3. Download models into comfyui
 RUN comfy model download --url https://huggingface.co/playgroundai/playground-v2.5-1024px-aesthetic/resolve/main/playground-v2.5-1024px-aesthetic.fp16.safetensors --relative-path models/checkpoints --filename playground-v2.5-1024px-aesthetic.fp16.safetensors
 
-# copy all input data (like images or videos) into comfyui (uncomment and adjust if needed)
+# Optional: Copy input data
 # COPY input/ /comfyui/input/
