@@ -5,6 +5,7 @@ FROM runpod/worker-comfyui:5.5.0-base
 RUN cd /comfyui/custom_nodes && \
     git clone https://github.com/discus0434/comfyui-aesthetic-predictor-v2-5.git && \
     git clone https://github.com/alexopus/ComfyUI-Image-Saver.git
+    git clone https://github.com/rgthree/rgthree-comfy
 
 # 2. Install dependencies for the new nodes
 # Aesthetic Predictor and Image Saver both have requirements.txt files
