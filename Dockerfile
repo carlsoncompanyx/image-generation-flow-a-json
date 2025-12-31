@@ -4,14 +4,16 @@ FROM runpod/worker-comfyui:5.5.0-base
 # 1. Install custom nodes into comfyui
 RUN cd /comfyui/custom_nodes && \
     git clone https://github.com/discus0434/comfyui-aesthetic-predictor-v2-5.git && \
-    git clone https://github.com/alexopus/ComfyUI-Image-Saver.git
-    git clone https://github.com/rgthree/rgthree-comfy
+    git clone https://github.com/alexopus/ComfyUI-Image-Saver.git && \
+    git clone https://github.com/rgthree/rgthree-comfy.git
 
 # 2. Install dependencies for the new nodes
-# Aesthetic Predictor and Image Saver both have requirements.txt files
 RUN pip install piexif && \
     if [ -f /comfyui/custom_nodes/comfyui-aesthetic-predictor-v2-5/requirements.txt ]; then \
     pip install -r /comfyui/custom_nodes/comfyui-aesthetic-predictor-v2-5/requirements.txt; \
+    fi && \
+    if [ -f /comfyui/custom_nodes/rgthree-comfy/requirements.txt ]; then \
+    pip install -r /comfyui/custom_nodes/rgthree-comfy/requirements.txt; \
     fi
 
 # 3. Download models into comfyui
